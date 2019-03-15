@@ -1,0 +1,27 @@
+{
+  "name": "mern_project",
+  "version": "1.0.0",
+  "description": "This repository is just used as reference to start with the Mongo, Express, React, and Node stack.",
+  "main": "index.js",
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.6.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordanrios94/mern_starter.git"
+  },
+  "author": "Jordan Rios <jordan.rios@tribalworldwide.co.uk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jordanrios94/mern_starter/issues"
+  },
+  "homepage": "https://github.com/jordanrios94/mern_starter#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
