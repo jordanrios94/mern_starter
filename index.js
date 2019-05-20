@@ -1,15 +1,29 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
+const keys = require('./config/keys');
 
 // Register models into mongoose
 require('./models/User');
 
-mongoose.connect(
-  '',
-  { useNewUrlParser: true }
-);
+// Services
+require('./services/passport');
+
+mongoose.connect(keys.MONGO_URI, { useNewUrlParser: true });
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.COOKIE_KEY]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 require('./routes/auth')(app);
 
